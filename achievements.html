@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achievements | Edmar Almuete</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+.container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      margin: 3px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .achievements-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      overflow: hidden;
+      padding-bottom: 50px;
+    }
+
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .achievement-card h2 {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 4px;
+    }
+
+    .achievement-card p {
+      font-size: 0.62rem;
+      margin: 2px 0;
+      line-height: 1.3;
+    }
+
+    .achievement-card img {
+      width: 22px;
+      height: 22px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin: 2px 4px 2px 0;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .prev-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #8b4bff, #d946ef);
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
+      font-size: 0.9rem;
+    }
+
+    .prev-btn:hover {
+      background: linear-gradient(135deg, #6d33d7, #c026d3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
+    }
+
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    @media (max-width: 1200px) {
+      .achievements-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <div class="container">
+    <header>
+      <h1>My Achievements</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="achievements.html" class="active">Achievements</a>
+      </nav>
+    </header>
+
+    <div class="achievements-grid">
+      
+      <!-- ACADEMICS -->
+      <div class="achievement-card">
+        <h2>📖 Academics</h2>
+        <p>With High Honors – SHS 2024</p>
+        <img src="shs2024.jpg" alt="shs2024">
+        <p>With High Honors – SHS 2025</p>
+        <img src="withhigh2025.jpg" alt="withhigh2025">
+        <p>Most Outstanding in All Sports – 2025</p>
+        <img src="atheletics.jpg" alt="atheletics">
+      </div>
+
+      <!-- TAEKWONDO -->
+      <div class="achievement-card">
+        <h2>🥋 Taekwondo</h2>
+        <p>Bronze – R1AA at Pozzurobio Pangasinan 2013</p>
+        <img src="R1takewondo.jpg" alt="R1taekwondo">
+        <p>Silver Invitational Taekwondo – Poomsae 2013</p>
+        <img src="calasioa.jpg" alt="calasiao">
+        <p>Bronze – Laoag Poomsae (2014)</p>
+        <img src="3taekwondo.jpg" alt="3taekwondo">
+        <p>Bronze – Laoag Combative (2014)</p>
+        <img src="3taekwondo.jpg" alt="3taekwondo">
+        <p>Bronze – Vigan (2014)</p>
+        <img src="regionalpoomsae.jpg" alt="regionalpoomsae">
+        <p>Bronze – Vigan Poomsae & Trio (2014)</p>
+        <img src="regionalpoomsae.jpg" alt="regionalpoomsae">
+      </div>
+
+      <!-- CHORALE -->
+      <div class="achievement-card">
+        <h2>🎶 Chorale</h2>
+        <p>Champion – Barangay 2023</p>
+        <img src="chorale2023.jpg" alt="chorale2023">
+        <p>Champion – Barangay 2024</p> 
+        <img src="chorale2024.jpg" alt="chorale2024">
+      </div>
+
+      <!-- BADMINTON -->
+      <div class="achievement-card">
+        <h2>🏸 Badminton</h2>
+        <p>Champion Sagunto U21 Badminton Tournament – 2023</p>
+        <img src="sagunto.jpg" alt="sagunto">
+        <p>Bronze MIxed Doubles Open Age Barangay Tournament – 2024</p>
+        <img src="soping.jpg" alt="soping">
+      </div>
+
+      <!-- VOLLEYBALL -->
+      <div class="achievement-card">
+        <h2>🏐 Volleyball</h2>
+        <p>Barangay Champion – 2024</p>
+        <img src="vball.jpg" alt="vball">
+      </div>
+
+      <!-- BASKETBALL -->
+      <div class="achievement-card">
+        <h2>🏀 Basketball</h2>
+        <p>U24 Mayor's Cup – Champion (2024)</p>
+        <img src="bballchamp.jpg" alt="bballchamp">
+        <p>Basketball APS Champion – 2023</p>
+        <img src="nlacbball.jpg" alt="nlacbball">
+      </div>
+
+      <!-- POEM -->
+       <div class="achievement-card">
+        <h2> POETRY </h2>
+        <p>Provincial School Poetry – Champion 2015</p>
+        <img src="poem2015.jpg" alt="poem2015">
+        <p>3rd placer Poem Recitation Division English OLympic – January 2015</p>
+      </div>
+    
+
+      <!-- OTHER AWARDS -->
+      <div class="achievement-card">
+        <h2>🏆 Other Awards</h2>
+        <p>Boy Scout of the Year</p>
+        <img src="bsp.jpg" alt="bsp">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <a href="education.html" class="prev-btn">⬅ Previous</a>
+
+  <script src="js.js"></script>
+  <script src="background.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dos | Education</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(180deg, #eb81c2, #a2678a, #bb42ad);
+      color: #eaeaea;
+    }
+
+    /* Background Canvas */
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      padding: 1rem 9%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      border-bottom: 1px solid rgb(247, 78, 239);
+    }
+
+    .logo {
+      font-size: 3rem;
+      color: #4e01c2;
+      font-weight: 800;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 15px #dd04e4;
+    }
+
+    nav a {
+      font-size: 1.8rem;
+      color: #e7e0e0;
+      margin-left: 4rem;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      border-bottom: 3px solid #5ef0ff;
+    }
+
+    /* EDUCATION SECTION */
+    .education-section {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      padding-top: 90px;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Title styling */
+    .heading {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      color: #f8f5f5;
+      text-shadow: 0 0 10px rgba(110, 234, 255, 0.5);
+    }
+
+    .heading span {
+      color: #6eeaff;
+    }
+
+    /* CONTAINER GRID */
+    .edu-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      height: 100%;
+      max-height: calc(100vh - 250px);
+      align-items: stretch;
+    }
+
+    /* EDUCATION CARDS */
+    .edu-card {
+      background: rgba(214, 194, 194, 0.486);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(39, 37, 37, 0.774);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid rgba(243, 248, 249, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(110, 234, 255, 0.4);
+      border-color: #6eeaff;
+    }
+
+    /* CARD IMAGE */
+    .edu-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border: 2px solid rgba(110, 234, 255, 0.2);
+    }
+
+    /* Card Content */
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* TEXT STYLING */
+    .edu-card h3 {
+      font-size: 1.6rem;
+      color: #4e01c2;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .edu-card h4 {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .edu-card p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* NAV BUTTONS */
+    .prev-btn, .next-btn {
+      position: fixed;
+      bottom: 25px;
+      padding: 1.2rem 2.5rem;
+      background: rgba(107, 115, 201, 0.9);
+      color: #6eeaff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 500;
+      border: 2px solid #6eeaff;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .prev-btn {
+      left: 25px;
+    }
+
+    .next-btn {
+      right: 25px;
+    }
+
+    .prev-btn:hover, .next-btn:hover {
+      background: #6eeaff;
+      color: #565b9f;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(110, 234, 255, 0.6);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1400px) {
+      .edu-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+      
+      .edu-card:last-child {
+        grid-column: 2 / 3;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .heading {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+      
+      .edu-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      
+      .edu-card h3 {
+        font-size: 1.4rem;
+      }
+      
+      .edu-card h4 {
+        font-size: 1.1rem;
+      }
+      
+      .edu-card p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        font-size: 1.4rem;
+        margin-left: 2rem;
+      }
+      
+      .heading {
+        font-size: 2.5rem;
+      }
+      
+      .edu-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-height: calc(100vh - 220px);
+        overflow-y: auto;
+      }
+      
+      .edu-card img {
+        height: 100px;
+      }
+      
+      .prev-btn, .next-btn {
+        padding: 1rem 1.8rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem 5%;
+      }
+      
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      nav a {
+        font-size: 1.2rem;
+        margin-left: 1.5rem;
+      }
+      
+      .heading {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .edu-card {
+        padding: 1rem;
+      }
+      
+      .edu-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .edu-card h4 {
+        font-size: 1rem;
+      }
+      
+      .edu-card p {
+        font-size: 0.95rem;
+      }
+      
+      .prev-btn, .next-btn {
+        bottom: 15px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+      }
+      
+      .prev-btn {
+        left: 15px;
+      }
+      
+      .next-btn {
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Canvas -->
+  <canvas id="bg"></canvas>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo">Dos</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="education.html" class="active">Education</a>
+      <a href="achievements.html">Achievements</a>
+    </nav>
+  </header>
+
+  <!-- EDUCATION SECTION -->
+  <section class="education-section">
+    <h2 class="heading">My <span>Educational Background</span></h2>
+
+    <div class="edu-container">
+
+      <!-- CARD 1 -->
+      <div class="edu-card">
+        <img src="mapalacsiao.webp" alt="Pre-School" />
+        <div class="card-content">
+          <h3>Pre-School</h3>
+          <h4>Mapalacsiao Elementary School (2010–2012)</h4>
+          <p>Learned basic writing, reading, drawing, and social skills.</p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="edu-card">
+        <img src="saytan.webp" alt="Elementary" />
+        <div class="card-content">
+          <h3>Elementary School</h3>
+          <h4>Saytan Integrated School (2012–2018)</h4>
+          <p>Salutatorian; varsity badminton team member.</p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="edu-card">
+        <img src="saytan.webp" alt="High School" />
+        <div class="card-content">
+          <h3>High School</h3>
+          <h4>Saytan Integrated School (2018–2023)</h4>
+          <p>Graduated with honors; awarded for leadership and excellence.</p>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="edu-card">
+        <img src="nlac.jpg" alt="Senior High School" />
+        <div class="card-content">
+          <h3>Senior High School</h3>
+          <h4>Northern Luzon Adventist College (2023–2025)</h4>
+          <p>STEM graduate; High Honors & Most Outstanding in Sports.</p>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="edu-card">
+        <img src="uc.jpg" alt="College" />
+        <div class="card-content">
+          <h3>College</h3>
+          <h4>University of the Cordilleras (Present)</h4>
+          <p>BSIT with ERP specialization. Aspiring software engineer.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <a href="index.html" class="prev-btn">⟵ Previous</a>
+  <a href="achievements.html" class="next-btn">Next ⟶</a>
+
+  <script>
+    // Galaxy Background with Shooting Stars and Cursor Glow Effects
+
+    // Canvas setup
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Stars array
+    const stars = [];
+    const starCount = 200;
+
+    // Create stars
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        opacity: Math.random(),
+        twinkleSpeed: Math.random() * 0.02 + 0.01,
+        growing: Math.random() > 0.5
+      });
+    }
+
+    // Shooting stars array
+    const shootingStars = [];
+
+    // Create shooting star
+    function createShootingStar() {
+      shootingStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height * 0.5,
+        length: Math.random() * 80 + 40,
+        speed: Math.random() * 3 + 2,
+        opacity: 1,
+        angle: Math.PI / 4
+      });
+    }
+
+    // Initial shooting star
+    createShootingStar();
+
+    // Animation function
+    function animate() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw and update stars
+      stars.forEach(star => {
+        if (star.growing) {
+          star.opacity += star.twinkleSpeed;
+          if (star.opacity >= 1) {
+            star.growing = false;
+          }
+        } else {
+          star.opacity -= star.twinkleSpeed;
+          if (star.opacity <= 0.2) {
+            star.growing = true;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+        ctx.closePath();
+      });
+
+      // Draw and update shooting stars
+      shootingStars.forEach((star, index) => {
+        const gradient = ctx.createLinearGradient(
+          star.x,
+          star.y,
+          star.x - Math.cos(star.angle) * star.length,
+          star.y - Math.sin(star.angle) * star.length
+        );
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+        gradient.addColorStop(0.5, `rgba(200, 220, 255, ${star.opacity * 0.5})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+        ctx.beginPath();
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(
+          star.x - Math.cos(star.angle) * star.length,
+          star.y - Math.sin(star.angle) * star.length
+        );
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.closePath();
+
+        star.x += Math.cos(star.angle) * star.speed;
+        star.y += Math.sin(star.angle) * star.speed;
+        star.opacity -= 0.005;
+
+        if (star.x > canvas.width || star.y > canvas.height || star.opacity <= 0) {
+          shootingStars.splice(index, 1);
+        }
+      });
+
+      if (Math.random() < 0.005) {
+        createShootingStar();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // CURSOR GLOW EFFECT
+    const cursorGlow = document.createElement('div');
+    cursorGlow.id = 'cursor-glow';
+    cursorGlow.style.cssText = `
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110, 234, 255, 0.8), rgba(110, 234, 255, 0.2), transparent);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+      opacity: 0;
+    `;
+    document.body.appendChild(cursorGlow);
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      cursorGlow.style.left = mouseX + 'px';
+      cursorGlow.style.top = mouseY + 'px';
+      cursorGlow.style.opacity = '1';
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.style.opacity = '0';
+    });
+
+    // HOVER GLOW EFFECTS
+    const glowStyle = document.createElement('style');
+    glowStyle.textContent = `
+      .glow-hover {
+        transition: all 0.3s ease;
+      }
+      
+      .glow-hover:hover {
+        text-shadow: 0 0 20px rgba(110, 234, 255, 0.8),
+                     0 0 30px rgba(110, 234, 255, 0.6),
+                     0 0 40px rgba(110, 234, 255, 0.4);
+        transform: scale(1.02);
+      }
+      
+      .card-glow:hover {
+        box-shadow: 0 0 30px rgba(110, 234, 255, 0.6),
+                    0 0 50px rgba(110, 234, 255, 0.4),
+                    inset 0 0 20px rgba(110, 234, 255, 0.2);
+        border-color: #6eeaff !important;
+      }
+      
+      .cursor-trail {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(110, 234, 255, 0.6);
+        pointer-events: none;
+        animation: fade-out 0.5s ease-out forwards;
+        z-index: 9998;
+      }
+      
+      @keyframes fade-out {
+        to {
+          opacity: 0;
+          transform: scale(2);
+        }
+      }
+    `;
+    document.head.appendChild(glowStyle);
+
+    function addGlowToElements() {
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      headings.forEach(heading => {
+        if (!heading.classList.contains('glow-hover')) {
+          heading.classList.add('glow-hover');
+        }
+      });
+
+      const paragraphs = document.querySelectorAll('p');
+      paragraphs.forEach(p => {
+        if (!p.classList.contains('glow-hover')) {
+          p.classList.add('glow-hover');
+        }
+      });
+
+      const cards = document.querySelectorAll('.edu-card, .timeline-item, .achievement-card');
+      cards.forEach(card => {
+        if (!card.classList.contains('card-glow')) {
+          card.classList.add('card-glow');
+        }
+      });
+
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        if (!link.classList.contains('glow-hover')) {
+          link.classList.add('glow-hover');
+        }
+      });
+    }
+
+    addGlowToElements();
+
+    const observer = new MutationObserver(addGlowToElements);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // CURSOR TRAIL EFFECT
+    let lastTrailTime = 0;
+    const trailInterval = 50;
+
+    document.addEventListener('mousemove', (e) => {
+      const currentTime = Date.now();
+      
+      if (currentTime - lastTrailTime > trailInterval) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        document.body.appendChild(trail);
+        
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+        
+        lastTrailTime = currentTime;
+      }
+    });
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.matches('a, button, .btn, .edu-card, .timeline-item, .achievement-card')) {
+        cursorGlow.style.width = '60px';
+        cursorGlow.style.height = '60px';
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.matches('a, button, .btn, .edu-card, .timeline-item, .achievement-card')) {
+        cursorGlow.style.width = '30px';
+        cursorGlow.style.height = '30px';
+      }
+    });
+  </script>
+</body>
+
+</html>
