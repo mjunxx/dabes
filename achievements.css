@@ -106,8 +106,8 @@ nav a.active {
 
 /* Image styling - half inch (approximately 48px) */
 .slide img {
-  width: 52px;
-  height: 52px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
   border-radius: 8px;
   margin: 5px 10px;
@@ -221,3 +221,4 @@ nav a.active {
   }
 
 }
+
