@@ -1,7 +1,11 @@
 /* Purple-Pink Gradient Background */
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,42 +15,42 @@ body {
 
 /* Container for content */
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 /* Header styling */
 header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 header h1 {
-  font-size: 2.5rem;
-  margin: 10px 0;
+  font-size: 1.6rem;
+  margin: 3px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 15px;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 5px 12px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  font-size: 0.8rem;
 }
 
 nav a:hover,
@@ -55,113 +59,70 @@ nav a.active {
   transform: translateY(-2px);
 }
 
-/* Slides section - no scroll */
-#achievement-slides {
+/* Achievements grid - no scroll */
+.achievements-grid {
   flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+
+/* Achievement card styling */
+.achievement-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Individual slide styling */
-.slide {
-  display: none;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  flex: 1;
-  overflow-y: auto;
-}
-
-.slide.active {
-  display: block;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.slide h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.achievement-card h2 {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 4px;
 }
 
-.slide p {
-  font-size: 1.1rem;
-  margin: 10px 0;
-  line-height: 1.6;
+.achievement-card p {
+  font-size: 0.62rem;
+  margin: 2px 0;
+  line-height: 1.3;
 }
 
-/* Image styling - half inch (approximately 48px) */
-.slide img {
-  width: 65px;
-  height: 65px;
+/* Image styling */
+.achievement-card img {
+  width: 22px;
+  height: 22px;
   object-fit: cover;
-  border-radius: 8px;
-  margin: 5px 10px;
+  border-radius: 4px;
+  margin: 2px 4px 2px 0;
   display: inline-block;
   vertical-align: middle;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Slide controls */
-.slide-controls {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-bottom: 10px;
-}
-
-.slide-controls button {
-  padding: 12px 30px;
-  font-size: 1rem;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #8b4bff, #d946ef);
-  color: white;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
-}
-
-.slide-controls button:hover {
-  background: linear-gradient(135deg, #6d33d7, #c026d3);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
-}
-
-.slide-controls button:active {
-  transform: translateY(0);
-}
-
-/* Previous page button */
+/* NAV BUTTONS */
 .prev-btn {
   position: fixed;
-  bottom: 30px;
-  left: 30px;
+  bottom: 20px;
+  left: 20px;
   color: white;
   text-decoration: none;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 25px;
   background: linear-gradient(135deg, #8b4bff, #d946ef);
   font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
+  font-size: 0.9rem;
 }
 
 .prev-btn:hover {
@@ -170,7 +131,28 @@ nav a.active {
   box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
 }
 
-/* Canvas background (if used) */
+.next-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #8b4bff, #d946ef);
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+.next-btn:hover {
+  background: linear-gradient(135deg, #6d33d7, #c026d3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
+}
+
+/* Canvas background */
 #bg {
   position: fixed;
   top: 0;
@@ -179,46 +161,22 @@ nav a.active {
 }
 
 /* Responsive design */
-@media (max-height: 700px) {
-  header h1 {
-    font-size: 2rem;
-  }
-  
-  .slide h2 {
-    font-size: 1.5rem;
-  }
-  
-  .slide p {
-    font-size: 0.95rem;
-  }
-  
-  .slide {
-    padding: 20px;
+@media (max-width: 1200px) {
+  .achievements-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 15px;
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   
   nav {
-    flex-direction: column;
-    gap: 10px;
+    flex-wrap: wrap;
   }
-  
-  .slide-controls {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .slide-controls button {
-    width: 100%;
-  }
-
 }
-
