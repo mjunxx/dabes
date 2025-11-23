@@ -98,8 +98,8 @@ nav a.active {
 
 /* Image styling */
 .achievement-card img {
-  width: 65px;
-  height: 65px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 4px;
   margin: 2px 4px 2px 0;
@@ -180,4 +180,3 @@ nav a.active {
     flex-wrap: wrap;
   }
 }
-
