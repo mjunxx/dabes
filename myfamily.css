@@ -11,10 +11,10 @@ body {
 
 /* Container for content */
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -292,3 +292,4 @@ nav a.active {
     font-size: 0.8rem;
   }
 }
+
