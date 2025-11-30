@@ -2,7 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
@@ -11,43 +12,45 @@ body {
 
 /* Container for content */
 .container {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 20px;
-  height: 80vh;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding: 0;
 }
 
 /* Header styling */
 header {
   text-align: center;
-  margin-bottom: 15px;
+  padding: 15px 20px 10px;
   flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
   font-size: 2.5rem;
-  margin: 10px 0;
+  margin: 5px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
+  gap: 15px;
+  margin-top: 8px;
+  flex-wrap: wrap;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
 nav a:hover,
@@ -56,7 +59,7 @@ nav a.active {
   transform: translateY(-2px);
 }
 
-/* Content section - no scroll, fits in one page */
+/* Content section - fills all available space */
 .content {
   flex: 1;
   display: flex;
@@ -64,26 +67,27 @@ nav a.active {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
+  margin: 15px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  min-height: 0;
+  margin-bottom: 90px;
 }
 
 .content h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
 
-/* Photos section - fits content without scrolling */
+/* Photos section - takes all remaining space */
 .photos {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
   flex: 1;
   min-height: 0;
@@ -93,15 +97,15 @@ nav a.active {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.3);
   flex: 1;
-  max-width: 350px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-width: 0;
 }
 
 .photo-card:hover {
@@ -111,42 +115,44 @@ nav a.active {
 
 .photos img {
   width: 100%;
-  height: auto;
-  max-height: 220px;
+  height: 0;
+  flex: 1;
+  min-height: 0;
   border-radius: 10px;
   object-fit: contain;
   border: 3px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: block;
-  margin-bottom: 10px;
-  flex-shrink: 0;
+  margin-bottom: 15px;
   background: rgba(255, 255, 255, 0.05);
 }
 
 .photo-title {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 5px 0;
+  margin: 8px 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
 
 .photo-desc {
   text-align: center;
-  font-size: 0.85rem;
-  margin: 5px 0 0 0;
-  line-height: 1.4;
-  flex: 1;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+  flex-shrink: 0;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
 
 /* Navigation buttons */
-.prev-btn {
+.prev-btn, .next-btn {
   position: fixed;
   bottom: 30px;
-  left: 30px;
   color: white;
   text-decoration: none;
   padding: 12px 24px;
@@ -155,29 +161,18 @@ nav a.active {
   font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
+  z-index: 1000;
 }
 
-.prev-btn:hover {
-  background: linear-gradient(135deg, #6d33d7, #c026d3);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
+.prev-btn {
+  left: 30px;
 }
 
 .next-btn {
-  position: fixed;
-  bottom: 30px;
   right: 30px;
-  color: white;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #8b4bff, #d946ef);
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
 }
 
-.next-btn:hover {
+.prev-btn:hover, .next-btn:hover {
   background: linear-gradient(135deg, #6d33d7, #c026d3);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
@@ -188,77 +183,40 @@ nav a.active {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 
 /* Responsive design */
-@media (max-height: 800px) {
-  header h1 {
-    font-size: 2rem;
-  }
-  
-  .content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .photos img {
-    max-height: 180px;
-  }
-  
-  .photo-desc {
-    font-size: 0.75rem;
+@media (max-width: 1024px) {
+  .photos {
+    gap: 20px;
   }
   
   .content {
-    padding: 15px;
-  }
-}
-
-@media (max-height: 700px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .content h2 {
-    font-size: 1.3rem;
-  }
-  
-  .photos img {
-    max-height: 150px;
-  }
-  
-  .photo-title {
-    font-size: 0.95rem;
-  }
-  
-  .photo-desc {
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .photos {
-    gap: 15px;
-  }
-  
-  .photo-card {
-    padding: 12px;
+    padding: 20px;
+    margin: 10px;
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-  
   header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   nav {
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  nav a {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
   }
   
   .photos {
@@ -266,22 +224,23 @@ nav a.active {
     gap: 15px;
   }
   
-  .photo-card {
-    max-width: 100%;
+  .photo-title {
+    font-size: 1.1rem;
   }
   
-  .photos img {
-    max-height: 180px;
+  .photo-desc {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
   }
 }
 
 @media (max-width: 480px) {
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   .content h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .photo-title {
@@ -291,5 +250,9 @@ nav a.active {
   .photo-desc {
     font-size: 0.8rem;
   }
+  
+  .content {
+    padding: 15px;
+    margin: 8px;
+  }
 }
-
