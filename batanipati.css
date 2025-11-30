@@ -25,7 +25,9 @@ header {
   text-align: center;
   padding: 15px 20px 10px;
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
 }
 
 header h1 {
@@ -65,134 +67,101 @@ nav a.active {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  margin: 15px;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin-bottom: 90px;
+  margin: 0;
+  padding: 0;
+  padding-top: 0;
+  z-index: 1;
 }
 
 .content h2 {
   font-size: 2.2rem;
-  margin: 0 0 20px 0;
+  margin: 0;
+  padding: 15px 0;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   flex-shrink: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
 }
 
-/* Main layout - batchmates list on left, photo on right */
+/* Main layout */
 .main-layout {
   display: flex;
-  gap: 30px;
-  justify-content: space-between;
-  align-items: stretch;
   flex: 1;
   min-height: 0;
-}
-
-/* Batchmates container - takes full height */
-.batchmates-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.batchmates-container h3 {
-  font-size: 1.5rem;
-  margin: 0 0 15px 0;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
-}
-
-.batchmates-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  overflow: hidden;
-  flex: 1;
-  align-content: start;
+  width: 100%;
   height: 100%;
-}
-
-.batchmates-list li {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 8px 14px;
-  border-radius: 8px;
-  border-left: 3px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  height: fit-content;
-}
-
-.batchmates-list li:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateX(3px);
+  position: relative;
 }
 
 /* Photo card - takes full height */
 .photo-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  flex: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  position: relative;
 }
 
 .photo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: none;
+  box-shadow: none;
 }
 
 .photo-card img {
   width: 100%;
-  height: 0;
-  flex: 1;
-  min-height: 0;
-  border-radius: 10px;
-  object-fit: contain;
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  box-shadow: none;
   display: block;
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.05);
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
 }
 
 .photo-title {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin: 10px 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: auto;
+  white-space: nowrap;
 }
 
 .photo-desc {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  font-size: 1rem;
-  margin: 5px 0 0 0;
+  font-size: 1.1rem;
+  margin: 0;
   line-height: 1.5;
-  flex-shrink: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: auto;
+  white-space: nowrap;
 }
 
 /* Navigation buttons */
@@ -236,13 +205,19 @@ nav a.active {
 
 /* Responsive design */
 @media (max-width: 1024px) {
-  .main-layout {
-    gap: 20px;
+  .content h2 {
+    font-size: 1.8rem;
+    padding: 12px 0;
   }
   
-  .content {
-    padding: 20px;
-    margin: 10px;
+  .photo-title {
+    font-size: 1.5rem;
+    bottom: 70px;
+  }
+  
+  .photo-desc {
+    font-size: 1rem;
+    bottom: 35px;
   }
 }
 
@@ -261,24 +236,20 @@ nav a.active {
   }
   
   .content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .main-layout {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .batchmates-list {
-    grid-template-columns: 1fr;
+    font-size: 1.5rem;
+    padding: 10px 0;
   }
   
   .photo-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    bottom: 65px;
   }
   
   .photo-desc {
     font-size: 0.9rem;
+    padding: 6px 18px;
+    bottom: 30px;
   }
 }
 
@@ -287,25 +258,24 @@ nav a.active {
     font-size: 1.6rem;
   }
   
-  .content h2 {
-    font-size: 1.4rem;
+  header {
+    padding: 10px 15px 8px;
   }
   
-  .batchmates-list li {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+  .content h2 {
+    font-size: 1.2rem;
+    padding: 8px 0;
   }
   
   .photo-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    bottom: 60px;
   }
   
   .photo-desc {
     font-size: 0.8rem;
-  }
-  
-  .content {
-    padding: 15px;
-    margin: 8px;
+    padding: 5px 12px;
+    bottom: 28px;
   }
 }
