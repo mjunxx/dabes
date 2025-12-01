@@ -98,7 +98,7 @@ nav a.active {
 .edu-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
+  gap: 1.0rem;
   height: 100%;
   max-height: calc(100vh - 250px);
   align-items: stretch;
@@ -108,7 +108,7 @@ nav a.active {
 .edu-card {
   background: rgba(214, 194, 194, 0.486);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.0rem;
   text-align: center;
   box-shadow: 0 4px 15px rgba(173, 173, 173, 0.774);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
