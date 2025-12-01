@@ -185,35 +185,32 @@
       line-height: 1.4;
     }
 
-    /* NAV BUTTONS */
-    .prev-btn, .next-btn {
+    /* Navigation buttons - both in right corner */
+    .nav-buttons {
       position: fixed;
       bottom: 25px;
+      right: 25px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .prev-btn, .next-btn {
       padding: 1.2rem 2.5rem;
-      background: rgba(107, 115, 201, 0.9);
-      color: #6eeaff;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #8b4bff, #d946ef);
+      color: white;
+      border-radius: 25px;
       text-decoration: none;
       font-size: 1.6rem;
-      font-weight: 500;
-      border: 2px solid #6eeaff;
+      font-weight: bold;
       transition: all 0.3s ease;
-      z-index: 99;
-    }
-
-    .prev-btn {
-      left: 25px;
-    }
-
-    .next-btn {
-      right: 25px;
+      box-shadow: 0 4px 15px rgba(139, 75, 255, 0.4);
     }
 
     .prev-btn:hover, .next-btn:hover {
-      background: #6eeaff;
-      color: #565b9f;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(110, 234, 255, 0.6);
+      background: linear-gradient(135deg, #6d33d7, #c026d3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 75, 255, 0.6);
     }
 
     /* RESPONSIVE DESIGN */
@@ -273,6 +270,12 @@
         height: 100px;
       }
       
+      .nav-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+      }
+      
       .prev-btn, .next-btn {
         padding: 1rem 1.8rem;
         font-size: 1.4rem;
@@ -314,18 +317,15 @@
         font-size: 0.95rem;
       }
       
-      .prev-btn, .next-btn {
+      .nav-buttons {
         bottom: 15px;
+        right: 15px;
+        gap: 8px;
+      }
+      
+      .prev-btn, .next-btn {
         padding: 0.8rem 1.5rem;
         font-size: 1.2rem;
-      }
-      
-      .prev-btn {
-        left: 15px;
-      }
-      
-      .next-btn {
-        right: 15px;
       }
     }
   </style>
@@ -344,7 +344,7 @@
       <a href="education.html" class="active">Education</a>
       <a href="achievements.html">Achievements</a>
       <a href="myfamily.html">My Family</a>
-      <a href="batanipati.html">PATIbayan</a>
+      <a href="batanipati.html">My Batchmates</a>
     </nav>
   </header>
 
@@ -407,9 +407,11 @@
     </div>
   </section>
 
-  <!-- NAVIGATION -->
-  <a href="index.html" class="prev-btn">⟵ Previous</a>
-  <a href="achievements.html" class="next-btn">Next ⟶</a>
+  <!-- Navigation buttons - both in right corner -->
+  <div class="nav-buttons">
+    <a href="index.html" class="prev-btn">← Previous</a>
+    <a href="achievements.html" class="next-btn">Next →</a>
+  </div>
 
   <script>
     // Galaxy Background with Shooting Stars and Cursor Glow Effects
@@ -675,4 +677,3 @@
 </body>
 
 </html>
-
